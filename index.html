@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕌 Hajj Financial Sustainability Dashboard | AI-Powered Analytics</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="AI-Powered Financial Analytics & Optimization Platform for Hajj Fund Management with Real-time Monitoring, ESG Assessment, and Predictive Modeling">
+    <meta name="keywords" content="hajj, financial analytics, AI optimization, ESG sustainability, Islamic finance, dashboard">
+    <meta name="author" content="MS Hadianto">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --danger-color: #EF4444;
+            --info-color: #3B82F6;
+            --dark-bg: #0F172A;
+            --card-bg: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --border-color: #334155;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        .header {
+            background: var(--primary-gradient);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFFFFF, #E0E7FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .hero .author {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 3rem;
+        }
+        
+        /* KPI Cards */
+        .kpi-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1E293B 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .kpi-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .kpi-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .kpi-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        
+        .status-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+        }
+        
+        .status-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-change {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .change-positive {
+            color: var(--success-color);
+        }
+        
+        .change-negative {
+            color: var(--danger-color);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--dark-bg);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Scenario Analysis */
+        .scenario-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #1E293B 0%, var(--dark-bg) 100%);
+        }
+        
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .scenario-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .scenario-pessimistic {
+            border-left: 4px solid var(--danger-color);
+        }
+        
+        .scenario-baseline {
+            border-left: 4px solid var(--info-color);
+        }
+        
+        .scenario-optimistic {
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .scenario-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .scenario-sustainability {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .scenario-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .scenario-assumptions {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .scenario-assumptions h4 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .assumptions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .assumptions-list li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Technology Stack */
+        .tech-stack {
+            padding: 80px 0;
+            background: var(--dark-bg);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .tech-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-category {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--primary-gradient);
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #2E3192;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">🕌 Hajj Financial Dashboard</div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard">📊 Dashboard</a></li>
+                <li><a href="#projections">🔮 Projections</a></li>
+                <li><a href="#optimization">🎯 Optimization</a></li>
+                <li><a href="#analytics">📈 Analytics</a></li>
+                <li><a href="#sustainability">🌱 ESG</a></li>
+            </ul>
+            <a href="https://hajj-mgt-system-mshadianto.streamlit.app/" class="cta-button" target="_blank">
+                🚀 Live Demo
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>🕌 SISTEM SUSTAINABILITAS KEUANGAN HAJI</h1>
+            <p class="subtitle">🚀 AI-Powered Financial Analytics & Optimization Platform</p>
+            <p class="description">Advanced Actuarial Modeling | Machine Learning Optimization | Islamic Finance Compliance</p>
+            <p class="author">Developed by MS Hadianto | RAG & Agentic AI Enthusiast | Audit Committee of Hajj Fund Management Agency</p>
+            <div class="cta-buttons">
+                <a href="https://hajj-mgt-system-mshadianto.streamlit.app/" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-rocket"></i> Access Dashboard
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI Section -->
+    <section id="dashboard" class="kpi-section">
+        <div class="container">
+            <h2 class="section-title reveal">🎯 Key Performance Indicators</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card reveal">
+                    <div class="kpi-header">
+                        <span class="kpi-title">🌱 Sustainability Index</span>
+                        <span class="kpi-status status-warning">Warning</span>
+                    </div>
+                    <div class="kpi-value">47.9%</div>
+                    <div class="kpi-change change-positive">
+                        <i class="fas fa-arrow-right"></i> 0.4%
+                    </div>
+                </div>
+                
+                <div class="kpi-card reveal">
+                    <div class="kpi-header">
+                        <span class="kpi-title">💰 Total Cost</span>
+                        <span class="kpi-status status-danger">Rising</span>
+                    </div>
+                    <div class="kpi-value">Rp 0.2B</div>
+                    <div class="kpi-change change-positive">
+                        <i class="fas fa-arrow-up"></i> 4.2%
+                    </div>
+                </div>
+                
+                <div class="kpi-card reveal">
+                    <div class="kpi-header">
+                        <span class="kpi-title">📊 Investment Return</span>
+                        <span class="kpi-status status-danger">Below Target</span>
+                    </div>
+                    <div class="kpi-value">1.7%</div>
+                    <div class="kpi-change">Target: 7.0%</div>
+                </div>
+                
+                <div class="kpi-card reveal">
+                    <div class="kpi-header">
+                        <span class="kpi-title">⚠️ Risk Level</span>
+                        <span class="kpi-status status-success">Low</span>
+                    </div>
+                    <div class="kpi-value">3</div>
+                    <div class="kpi-change">Stable</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title reveal">✨ Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Executive Dashboard</h3>
+                    <p class="feature-description">Real-time monitoring of key financial metrics, performance indicators, and sustainability alerts with interactive visualizations.</p>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🔮</div>
+                    <h3 class="feature-title">Financial Projections</h3>
+                    <p class="feature-description">Advanced forecasting models including Linear Trend, ARIMA, and Machine Learning with up to 25-year projections.</p>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">AI Optimization</h3>
+                    <p class="feature-description">Genetic algorithm-powered portfolio optimization with multi-objective functions for return, risk, and sustainability.</p>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Advanced Analytics</h3>
+                    <p class="feature-description">Comprehensive statistical modeling, trend analysis, and AI-generated insights for informed decision making.</p>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🌱</div>
+                    <h3 class="feature-title">ESG Sustainability</h3>
+                    <p class="feature-description">Complete ESG assessment with Environmental (70), Social (79), and Governance (86) scoring systems.</p>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">RAG Assistant</h3>
+                    <p class="feature-description">Intelligent AI assistant with retrieval-augmented generation for financial queries and strategic guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenario Analysis -->
+    <section id="projections" class="scenario-section">
+        <div class="container">
+            <h2 class="section-title reveal">📋 Scenario Analysis</h2>
+            <div class="scenario-grid">
+                <div class="scenario-card scenario-pessimistic reveal">
+                    <h3 class="scenario-title">😰 Pessimistic Scenario</h3>
+                    <div class="scenario-sustainability">26.5%</div>
+                    <p class="scenario-description">Conservative assumptions with higher costs and lower returns</p>
+                    <div class="scenario-assumptions">
+                        <h4>Key Assumptions:</h4>
+                        <ul class="assumptions-list">
+                            <li>• BPIH: +15%</li>
+                            <li>• Benefit: -10%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-card scenario-baseline reveal">
+                    <h3 class="scenario-title">📊 Baseline Scenario</h3>
+                    <div class="scenario-sustainability">33.9%</div>
+                    <p class="scenario-description">Current trend continuation with moderate assumptions</p>
+                    <div class="scenario-assumptions">
+                        <h4>Key Assumptions:</h4>
+                        <ul class="assumptions-list">
+                            <li>• BPIH: +0%</li>
+                            <li>• Benefit: +0%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-card scenario-optimistic reveal">
+                    <h3 class="scenario-title">😊 Optimistic Scenario</h3>
+                    <div class="scenario-sustainability">41.0%</div>
+                    <p class="scenario-description">Favorable conditions with cost efficiency and higher returns</p>
+                    <div class="scenario-assumptions">
+                        <h4>Key Assumptions:</h4>
+                        <ul class="assumptions-list">
+                            <li>• BPIH: -5%</li>
+                            <li>• Benefit: +15%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section id="tech" class="tech-stack">
+        <div class="container">
+            <h2 class="section-title reveal">🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #FF4B4B;">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="tech-name">Streamlit</div>
+                    <div class="tech-category">Frontend Framework</div>
+                </div>
+                
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #3776AB;">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="tech-name">Python</div>
+                    <div class="tech-category">Backend Language</div>
+                </div>
+                
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #FF6F00;">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="tech-name">TensorFlow</div>
+                    <div class="tech-category">Machine Learning</div>
+                </div>
+                
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #3F4F75;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tech-name">Plotly</div>
+                    <div class="tech-category">Data Visualization</div>
+                </div>
+                
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #150458;">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="tech-name">Pandas</div>
+                    <div class="tech-category">Data Analysis</div>
+                </div>
+                
+                <div class="tech-item reveal">
+                    <div class="tech-icon" style="color: #013243;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="tech-name">SQLite</div>
+                    <div class="tech-category">Database</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to Optimize Your Hajj Fund Management?</h2>
+                <p>Experience the power of AI-driven financial analytics and sustainability monitoring</p>
+                <div class="cta-buttons">
+                    <a href="https://hajj-mgt-system-mshadianto.streamlit.app/" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-rocket"></i> Launch Dashboard
+                    </a>
+                    <a href="https://github.com/mshadianto/hajj_mgt_system" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> View Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://hajj-mgt-system-mshadianto.streamlit.app/" target="_blank">Live Demo</a>
+                    <a href="https://github.com/mshadianto/hajj_mgt_system" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/mshadianto" target="_blank">LinkedIn</a>
+                    <a href="mailto:mshadianto@email.com">Contact</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 MS Hadianto. Built with ❤️ for sustainable Hajj fund management.</p>
+                    <p><em>"Enhancing financial sustainability through AI-driven insights and Islamic finance principles"</em></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(46, 49, 146, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%)';
+            }
+        });
+
+        // Initialize reveal on load
+        reveal();
+    </script>
+</body>
+</html>
