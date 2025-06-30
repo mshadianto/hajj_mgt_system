@@ -1,0 +1,264 @@
+/* Hajj Financial Sustainability Application - Custom CSS */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Global Styles */
+.main > div {
+    font-family: var(--font-family);
+}
+
+/* Header Styles */
+.main-header {
+    background: var(--gradient-primary);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.main-header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.main-header h3 {
+    margin: 0.5rem 0;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Card Styles */
+.metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border-left: 4px solid var(--primary-color);
+    margin: 1rem 0;
+    transition: var(--transition);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    margin: 1rem 0;
+    transition: var(--transition);
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Styles */
+.stButton > button {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Sidebar Styles */
+.css-1d391kg {
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-left-color: var(--success-color);
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-left-color: var(--warning-color);
+    color: #856404;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left-color: var(--danger-color);
+    color: #721c24;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-left-color: var(--info-color);
+    color: #0c5460;
+}
+
+/* Status Indicators */
+.status-excellent {
+    color: var(--success-color);
+    border-left-color: var(--success-color);
+}
+
+.status-good {
+    color: var(--warning-color);
+    border-left-color: var(--warning-color);
+}
+
+.status-warning {
+    color: #e67e22;
+    border-left-color: #e67e22;
+}
+
+.status-critical {
+    color: var(--danger-color);
+    border-left-color: var(--danger-color);
+}
+
+/* Progress Indicators */
+.progress-container {
+    background: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    background: var(--gradient-success);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .main-header h3 {
+        font-size: 1rem;
+    }
+    
+    .metric-card,
+    .kpi-card {
+        padding: 1rem;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* Chart Container Styles */
+.chart-container {
+    background: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin: 1rem 0;
+}
+
+/* Form Styles */
+.stSelectbox > div > div {
+    border-radius: var(--border-radius);
+}
+
+.stTextInput > div > div > input {
+    border-radius: var(--border-radius);
+}
+
+.stNumberInput > div > div > input {
+    border-radius: var(--border-radius);
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Loading Spinner Styles */
+.stSpinner > div {
+    border-color: var(--primary-color) !important;
+}
+
+/* Dataframe Styles */
+.dataframe {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* Tab Styles */
+.stTabs > div > div > div > div {
+    font-weight: 600;
+}
+
+/* Expander Styles */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
