@@ -706,7 +706,7 @@ with tab3:
             'Monthly Savings': f"Rp {option['monthly_savings']:,.0f}",
             'Risk Level': recommendation['risk_level'],
             'Total Investment Returns': f"Rp {option['total_returns']:,.0f}",
-            Suitable For': planner.get_suitability(profile)  # Fixed: Using planner instance method
+            'Suitable For': planner.get_suitability(profile)  # Fixed: Using planner instance method
         })
     
     def _get_suitability(profile):
