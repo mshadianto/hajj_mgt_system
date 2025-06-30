@@ -136,6 +136,35 @@ class HajjFinanceKnowledgeBase:
                 "confidence": 0.95
             },
             {
+                "id": "bpkh_overview",
+                "title": "BPKH (Badan Pengelola Keuangan Haji)",
+                "content": """
+                BPKH adalah lembaga yang dibentuk berdasarkan UU No. 34 Tahun 2014 untuk mengelola keuangan haji secara profesional dan transparan.
+                
+                Struktur Organisasi BPKH:
+                1. Badan Pelaksana: Fungsi perencanaan, pelaksanaan, pertanggungjawaban, dan pelaporan
+                2. Dewan Pengawas: Fungsi pengawasan terhadap pengelolaan keuangan haji
+                
+                Tugas Utama BPKH:
+                - Mengelola keuangan haji (penerimaan, pengembangan, pengeluaran, pertanggungjawaban)
+                - Menempatkan dan menginvestasikan dana sesuai prinsip syariah
+                - Melakukan kerjasama dengan lembaga lain
+                - Memberikan laporan berkala
+                
+                Prinsip Pengelolaan:
+                - Prinsip syariah
+                - Prinsip kehati-hatian
+                - Manfaat untuk jemaah
+                - Nirlaba
+                - Transparan
+                - Akuntabel
+                """,
+                "category": "institutional",
+                "tags": ["bpkh", "organisasi", "struktur", "tugas"],
+                "language": "id",
+                "confidence": 0.96
+            },
+            {
                 "id": "islamic_investment_principles",
                 "title": "Prinsip Investasi Syariah untuk Dana Haji",
                 "content": """
@@ -161,6 +190,36 @@ class HajjFinanceKnowledgeBase:
                 "tags": ["syariah", "sukuk", "reksadana", "diversifikasi"],
                 "language": "id",
                 "confidence": 0.92
+            },
+            {
+                "id": "hajj_fund_composition",
+                "title": "Komposisi Keuangan Haji",
+                "content": """
+                Berdasarkan UU No. 34/2014, keuangan haji terdiri dari:
+                
+                A. PENERIMAAN:
+                1. Setoran BPIH dan/atau BPIH Khusus
+                2. Nilai manfaat keuangan haji (hasil investasi)
+                3. Dana efisiensi penyelenggaraan ibadah haji
+                4. Dana Alokasi Umum (DAU)
+                5. Sumber lain yang sah dan tidak mengikat
+                
+                B. PENGELUARAN:
+                1. Penyelenggaraan ibadah haji
+                2. Operasional BPKH
+                3. Penempatan dan/atau investasi keuangan haji
+                4. Kegiatan untuk kemaslahatan umat Islam
+                5. Lain-lain pengeluaran yang sah
+                
+                Pengelolaan harus mengoptimalkan nilai manfaat untuk:
+                - Meningkatkan kualitas penyelenggaraan ibadah haji
+                - Rasionalitas dan efisiensi penggunaan BPIH
+                - Manfaat bagi kemaslahatan umat Islam
+                """,
+                "category": "fund_structure",
+                "tags": ["penerimaan", "pengeluaran", "bpih", "nilai_manfaat"],
+                "language": "id",
+                "confidence": 0.94
             },
             {
                 "id": "risk_management_hajj",
@@ -232,10 +291,12 @@ class HajjFinanceKnowledgeBase:
                 "content": """
                 Kerangka regulasi pengelolaan dana haji di Indonesia:
                 
-                1. UU No. 8 Tahun 2019 tentang Penyelenggaraan Ibadah Haji dan Umrah
-                2. PP No. 79 Tahun 2012 tentang Pelaksanaan UU Pengelolaan Haji
-                3. Peraturan Menteri Agama terkait pengelolaan keuangan haji
-                4. Fatwa DSN-MUI tentang investasi syariah
+                1. UU No. 34 Tahun 2014 tentang Pengelolaan Keuangan Haji
+                2. UU No. 8 Tahun 2019 tentang Penyelenggaraan Ibadah Haji dan Umrah
+                3. PP No. 5 Tahun 2018 tentang Pelaksanaan UU No. 34/2014
+                4. PP No. 79 Tahun 2012 tentang Pelaksanaan UU Pengelolaan Haji
+                5. Peraturan Menteri Agama terkait pengelolaan keuangan haji
+                6. Fatwa DSN-MUI tentang investasi syariah
                 
                 Kewajiban Utama:
                 - Transparansi pengelolaan dana
@@ -296,20 +357,60 @@ class HajjFinanceKnowledgeBase:
         """Load regulatory information"""
         return [
             {
+                "regulation_id": "uu_34_2014",
+                "title": "UU No. 34 Tahun 2014",
+                "summary": "Undang-undang tentang Pengelolaan Keuangan Haji",
+                "description": "UU yang mengatur pembentukan BPKH dan pengelolaan keuangan haji secara komprehensif",
+                "effective_date": "2014-10-17",
+                "key_points": [
+                    "Pembentukan BPKH sebagai lembaga pengelola keuangan haji",
+                    "Prinsip pengelolaan: syariah, kehati-hatian, manfaat, nirlaba, transparan, akuntabel",
+                    "Struktur organisasi: Badan Pelaksana dan Dewan Pengawas",
+                    "Keuangan haji meliputi penerimaan dan pengeluaran yang diatur ketat",
+                    "Investasi harus sesuai prinsip syariah dengan fokus keamanan dan manfaat",
+                    "Wajib audit eksternal dan pelaporan berkala",
+                    "Sanksi tegas untuk pelanggaran pengelolaan"
+                ],
+                "implementing_regulations": [
+                    "PP No. 5 Tahun 2018",
+                    "Perpres No. 76 Tahun 2016",
+                    "Perpres No. 110 Tahun 2017"
+                ]
+            },
+            {
                 "regulation_id": "uu_8_2019",
                 "title": "UU No. 8 Tahun 2019",
                 "summary": "Undang-undang tentang Penyelenggaraan Ibadah Haji dan Umrah",
+                "description": "UU yang mengatur penyelenggaraan ibadah haji dan umrah secara menyeluruh",
+                "effective_date": "2019-05-07",
                 "key_points": [
                     "Pengelolaan dana haji harus transparan dan akuntabel",
                     "Investasi harus sesuai prinsip syariah",
                     "Perlindungan hak dan dana jemaah",
-                    "Pengawasan dan audit berkala"
+                    "Pengawasan dan audit berkala",
+                    "Koordinasi antar lembaga penyelenggara"
+                ]
+            },
+            {
+                "regulation_id": "pp_5_2018",
+                "title": "PP No. 5 Tahun 2018",
+                "summary": "Pelaksanaan UU No. 34 Tahun 2014 tentang Pengelolaan Keuangan Haji",
+                "description": "Peraturan pelaksanaan yang mengatur detail operasional BPKH",
+                "effective_date": "2018-01-24",
+                "key_points": [
+                    "Tata cara perencanaan, pelaksanaan, dan pelaporan keuangan haji",
+                    "Mekanisme penerimaan dan pengeluaran keuangan haji",
+                    "Prosedur investasi dan penempatan dana",
+                    "Sistem pengawasan dan audit internal/eksternal",
+                    "Koordinasi dengan Kementerian Agama dan lembaga terkait"
                 ]
             },
             {
                 "regulation_id": "pp_79_2012", 
                 "title": "PP No. 79 Tahun 2012",
                 "summary": "Peraturan Pelaksanaan Pengelolaan Dana Haji",
+                "description": "Peraturan yang mengatur mekanisme pengelolaan dana haji sebelum pembentukan BPKH",
+                "effective_date": "2012-12-28",
                 "key_points": [
                     "Struktur organisasi pengelola",
                     "Mekanisme investasi dana",
@@ -345,6 +446,12 @@ class HajjFinanceKnowledgeBase:
                 "arabic": "دعم الأصول",
                 "description": "Setiap investasi harus didukung aset riil",
                 "application": "Preferensi pada real estate, komoditas, dan equity"
+            },
+            {
+                "principle": "Transparency and Accountability",
+                "arabic": "الشفافية والمساءلة",
+                "description": "Pengelolaan harus transparan dan dapat dipertanggungjawabkan",
+                "application": "Laporan berkala, audit eksternal, dan disclosure yang memadai"
             }
         ]
     
@@ -355,6 +462,11 @@ class HajjFinanceKnowledgeBase:
                 "question": "Bagaimana cara menghitung sustainability index dana haji?",
                 "answer": "Sustainability Index = (Nilai Manfaat ÷ BPIH) × 100%. Index >60% dianggap sehat, 40-60% perlu perhatian, <40% kritis dan butuh intervensi segera.",
                 "category": "calculation"
+            },
+            {
+                "question": "Apa itu BPKH dan bagaimana strukturnya?",
+                "answer": "BPKH (Badan Pengelola Keuangan Haji) adalah lembaga yang dibentuk UU No. 34/2014. Terdiri dari Badan Pelaksana (5 orang profesional) dan Dewan Pengawas (7 orang: 2 dari pemerintah, 5 dari masyarakat).",
+                "category": "institutional"
             },
             {
                 "question": "Instrumen investasi apa saja yang diperbolehkan untuk dana haji?",
@@ -370,6 +482,16 @@ class HajjFinanceKnowledgeBase:
                 "question": "Bagaimana cara mengelola risiko dalam investasi dana haji?",
                 "answer": "Manajemen risiko melalui: 1) Diversifikasi portofolio, 2) Stress testing berkala, 3) Monitoring real-time, 4) Hedging syariah, 5) Contingency planning, dan 6) Insurance takaful.",
                 "category": "risk"
+            },
+            {
+                "question": "Apa perbedaan UU No. 34/2014 dengan UU No. 8/2019?",
+                "answer": "UU 34/2014 fokus pada pengelolaan keuangan haji dan pembentukan BPKH. UU 8/2019 mengatur penyelenggaraan ibadah haji dan umrah secara menyeluruh termasuk aspek operasional.",
+                "category": "regulatory"
+            },
+            {
+                "question": "Bagaimana proses pengawasan pengelolaan dana haji?",
+                "answer": "Pengawasan dilakukan berlapis: internal oleh Dewan Pengawas BPKH, eksternal oleh auditor independen, dan pengawasan negara oleh Kementerian Agama dan Kementerian Keuangan.",
+                "category": "governance"
             }
         ]
     
@@ -445,11 +567,13 @@ class RAGAssistant:
         
         if any(word in query_lower for word in ['hitung', 'kalkulasi', 'rumus', 'cara menghitung']):
             return 'calculation'
+        elif any(word in query_lower for word in ['bpkh', 'organisasi', 'struktur', 'tugas']):
+            return 'institutional'
         elif any(word in query_lower for word in ['investasi', 'portofolio', 'saham', 'sukuk']):
             return 'investment'
         elif any(word in query_lower for word in ['risiko', 'manajemen risiko', 'hedge']):
             return 'risk_management'
-        elif any(word in query_lower for word in ['regulasi', 'hukum', 'compliance']):
+        elif any(word in query_lower for word in ['regulasi', 'hukum', 'compliance', 'uu', 'pp']):
             return 'regulatory'
         elif any(word in query_lower for word in ['sustainability', 'sustainabilitas', 'jangka panjang']):
             return 'sustainability'
@@ -470,6 +594,8 @@ class RAGAssistant:
         # Add intent-specific response
         if intent == 'calculation':
             response += "📊 **Perhitungan yang Anda tanyakan:**\n\n"
+        elif intent == 'institutional':
+            response += "🏛️ **Informasi Kelembagaan:**\n\n"
         elif intent == 'investment':
             response += "💰 **Panduan Investasi:**\n\n"
         elif intent == 'risk_management':
@@ -529,6 +655,11 @@ class RAGAssistant:
                 "Monitor KPI secara monthly dengan target >60%",
                 "Lakukan stress testing scenario berkala"
             ],
+            'institutional': [
+                "Pahami struktur dan fungsi BPKH sesuai UU No. 34/2014",
+                "Koordinasi efektif antara Badan Pelaksana dan Dewan Pengawas",
+                "Implementasi governance yang transparan dan akuntabel"
+            ],
             'investment': [
                 "Diversifikasi portfolio dengan 40% sukuk, 30% saham syariah, 20% real estate, 10% cash",
                 "Target return 6-8% per tahun dengan volatilitas <15%",
@@ -540,9 +671,9 @@ class RAGAssistant:
                 "Gunakan hedging syariah untuk mitigasi risiko mata uang"
             ],
             'regulatory': [
-                "Pastikan compliance dengan UU No. 8 Tahun 2019",
-                "Lakukan audit eksternal tahunan",
-                "Dokumentasikan semua proses untuk transparansi"
+                "Pastikan compliance dengan UU No. 34/2014 dan UU No. 8/2019",
+                "Implementasikan PP No. 5/2018 untuk operasional BPKH",
+                "Lakukan audit eksternal tahunan sesuai regulasi"
             ],
             'sustainability': [
                 "Fokus pada long-term value creation",
@@ -571,7 +702,7 @@ class RAGAssistant:
         
         💡 **Saran Umum:**
         - Konsultasikan dengan ahli keuangan syariah
-        - Rujuk kepada regulasi terkait (UU No. 8 Tahun 2019)
+        - Rujuk kepada regulasi terkait (UU No. 34/2014, UU No. 8/2019)
         - Lakukan analisis mendalam sebelum mengambil keputusan
         
         Silakan ajukan pertanyaan yang lebih spesifik untuk mendapat panduan yang lebih tepat.
@@ -604,6 +735,7 @@ st.markdown("""
     <h1>🤖 RAG ASSISTANT - PANDUAN KEUANGAN HAJI</h1>
     <h3>Intelligent Knowledge System untuk Konsultasi Finansial Syariah</h3>
     <p>💬 Tanyakan apapun tentang pengelolaan dana haji, investasi syariah, dan sustainabilitas</p>
+    <p><em>📜 Telah diperbarui dengan UU No. 34/2014 tentang Pengelolaan Keuangan Haji</em></p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -628,11 +760,12 @@ with st.sidebar:
     st.markdown("### 💡 Contoh Pertanyaan")
     
     example_questions = [
+        "Apa itu BPKH dan bagaimana strukturnya?",
         "Bagaimana cara menghitung sustainability index?",
+        "Perbedaan UU 34/2014 dengan UU 8/2019?",
         "Instrumen investasi apa yang direkomendasikan?",
         "Bagaimana strategi manajemen risiko yang efektif?",
-        "Apa saja prinsip syariah dalam investasi?",
-        "Berapa target return yang ideal?"
+        "Apa saja prinsip syariah dalam investasi?"
     ]
     
     for question in example_questions:
@@ -675,7 +808,7 @@ with col1:
     user_query = st.text_input(
         "Tanyakan tentang keuangan haji...",
         value=user_input,
-        placeholder="Contoh: Bagaimana cara optimalisasi portfolio investasi dana haji?",
+        placeholder="Contoh: Bagaimana UU No. 34/2014 mengatur pengelolaan dana haji?",
         key="chat_input"
     )
 
@@ -775,9 +908,17 @@ with tab2:
     for reg in assistant.kb.financial_regulations:
         with st.expander(f"📜 {reg['title']}"):
             st.markdown(f"**Summary:** {reg['summary']}")
+            if 'description' in reg:
+                st.markdown(f"**Description:** {reg['description']}")
+            if 'effective_date' in reg:
+                st.markdown(f"**Effective Date:** {reg['effective_date']}")
             st.markdown("**Key Points:**")
             for point in reg['key_points']:
                 st.markdown(f"• {point}")
+            if 'implementing_regulations' in reg:
+                st.markdown("**Implementing Regulations:**")
+                for impl_reg in reg['implementing_regulations']:
+                    st.markdown(f"• {impl_reg}")
 
 with tab3:
     st.markdown("### ☪️ Islamic Finance Principles")
@@ -840,5 +981,6 @@ st.markdown("""
     <h4>🤖 RAG Assistant untuk Keuangan Haji</h4>
     <p>Powered by Advanced NLP & Islamic Finance Knowledge Base</p>
     <p><em>Memberikan panduan finansial yang akurat dan sesuai syariah</em></p>
+    <p><strong>Updated:</strong> Includes UU No. 34/2014 tentang Pengelolaan Keuangan Haji</p>
 </div>
 """, unsafe_allow_html=True)

@@ -310,6 +310,15 @@ class PersonalHajjPlanner:
             })
         
         return milestones
+    
+    def get_suitability(self, profile):
+        """Get suitability description for investment profile"""
+        suitability_map = {
+            'conservative': 'Risk-averse investors, near retirement, short time horizon',
+            'moderate': 'Balanced approach, medium time horizon, some risk tolerance',
+            'aggressive': 'High risk tolerance, long time horizon, growth focused'
+        }
+        return suitability_map.get(profile, 'Unknown profile')
 
 # Header
 st.markdown("""
@@ -706,25 +715,8 @@ with tab3:
             'Monthly Savings': f"Rp {option['monthly_savings']:,.0f}",
             'Risk Level': recommendation['risk_level'],
             'Total Investment Returns': f"Rp {option['total_returns']:,.0f}",
-            'Suitable For': self._get_suitability(profile)
+            'Suitable For': planner.get_suitability(profile)  # Fixed: Using planner instance method
         })
-    
-    def _get_suitability(profile):
-        suitability = {
-            'conservative': 'Risk-averse, near retirement, short time horizon',
-            'moderate': 'Balanced approach, medium time horizon, some risk tolerance',
-            'aggressive': 'High risk tolerance, long time horizon, growth focused'
-        }
-        return suitability.get(profile, '')
-    
-    # Monkey patch the method to the instance
-    for item in comparison_data:
-        if 'conservative' in item['Strategy'].lower():
-            item['Suitable For'] = 'Risk-averse, near retirement, short time horizon'
-        elif 'moderate' in item['Strategy'].lower():
-            item['Suitable For'] = 'Balanced approach, medium time horizon, some risk tolerance'
-        else:
-            item['Suitable For'] = 'High risk tolerance, long time horizon, growth focused'
     
     comparison_df = pd.DataFrame(comparison_data)
     st.dataframe(comparison_df, use_container_width=True)
