@@ -302,8 +302,8 @@ chromadb >= 0.4.0        # Vector database
 *RAG & Agentic AI Enthusiast | Audit Committee of Hajj Fund Management Agency*
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mshadianto)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mshadianto)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mshadianto@email.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://[linkedin.com/in/mshadianto](https://www.linkedin.com/in/m-sopian-hadianto-se-ak-m-m-cacp%C2%AE-ccfa%C2%AE-qia%C2%AE-ca%C2%AE-grcp%C2%AE-grca%C2%AE-cgp%C2%AE-2ab1a718/))
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sopian.hadianto@gmail.com)
 
 </div>
 
@@ -394,6 +394,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **📈 Actionable Insights**: AI-generated recommendations untuk decision making
 
 ---
+<<<<<<< HEAD
+
+**⭐ Star this repository if it helps improve Hajj fund sustainability! ⭐**
+
+**🤲 Dedicated to enhancing financial sustainability for future generations 🤲**
+
+*"Building intelligent systems for sustainable Hajj fund management"*
+
+---
+
+*Dashboard last updated: 2025-06-30 07:43:54*
+=======
+>>>>>>> 31f9d9036873742450c6921dc59f37599e37af95
 
 **⭐ Star this repository if it helps improve Hajj fund sustainability! ⭐**
 
