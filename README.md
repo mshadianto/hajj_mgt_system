@@ -1,17 +1,17 @@
-# 🕌 Sistem Sustainabilitas Keuangan Haji
+# 🕌 Hajj Financial Sustainability Dashboard
 
 <div align="center">
 
-![Hajj Financial Analytics](https://img.shields.io/badge/Hajj-Financial%20Analytics-2E8B57?style=for-the-badge&logo=python)
+![Hajj Financial Analytics](https://img.shields.io/badge/Hajj-Financial%20Sustainability-2E8B57?style=for-the-badge&logo=python)
 ![AI Powered](https://img.shields.io/badge/AI-Powered-FF6B35?style=for-the-badge&logo=tensorflow)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Islamic Finance](https://img.shields.io/badge/Islamic-Finance%20Compliant-228B22?style=for-the-badge&logo=crescent-moon)
+![ESG Compliant](https://img.shields.io/badge/ESG-Compliant-228B22?style=for-the-badge&logo=leaf)
 
-**🚀 AI-Powered Financial Analytics & Optimization Platform for Hajj Fund Management**
+**🚀 Real-time Monitoring & Analytics for Hajj Fund Management**
 
-*Advanced Actuarial Modeling | Machine Learning Optimization | Islamic Finance Compliance*
+*Advanced Forecasting | AI Optimization | ESG Sustainability | Islamic Finance Compliance*
 
-[🌐 Live Demo](https://hajj-mgt-system-mshadianto.streamlit.app/) • [📊 Analytics](#-key-features) • [🤖 AI Assistant](#-rag-assistant) • [📈 Optimization](#-optimization-engine)
+[🌐 Live Demo](https://hajj-mgt-system-mshadianto.streamlit.app/) • [📊 Executive Dashboard](#-executive-dashboard) • [🔮 Projections](#-financial-projections) • [🎯 AI Optimization](#-ai-optimization)
 
 </div>
 
@@ -20,99 +20,191 @@
 ## 📋 Table of Contents
 
 - [🎯 About the Project](#-about-the-project)
-- [✨ Key Features](#-key-features)
-- [🧠 AI & Machine Learning](#-ai--machine-learning)
-- [📊 Dashboard Metrics](#-dashboard-metrics)
+- [✨ Core Features](#-core-features)
+- [📊 Executive Dashboard](#-executive-dashboard)
+- [🔮 Financial Projections](#-financial-projections)
+- [🎯 AI Optimization](#-ai-optimization)
+- [📈 Advanced Analytics](#-advanced-analytics)
+- [🌱 ESG Sustainability](#-esg-sustainability)
 - [🛠️ Technology Stack](#️-technology-stack)
 - [🚀 Quick Start](#-quick-start)
-- [📱 Application Modules](#-application-modules)
-- [🔬 Advanced Analytics](#-advanced-analytics)
 - [👨‍💻 Developer](#-developer)
-- [🤝 Contributing](#-contributing)
 
 ---
 
 ## 🎯 About the Project
 
-**Sistem Sustainabilitas Keuangan Haji** adalah platform analitik keuangan berbasis AI yang dirancang khusus untuk mengelola dan mengoptimalkan dana haji. Platform ini mengintegrasikan pemodelan aktuaria tingkat lanjut, optimisasi machine learning, dan kepatuhan keuangan Islam untuk memastikan sustainabilitas jangka panjang dana haji.
+**Hajj Financial Sustainability Dashboard** adalah platform analitik keuangan real-time yang dirancang untuk memantau dan mengoptimalkan keberlanjutan dana haji. Sistem ini mengintegrasikan advanced forecasting, AI-powered optimization, dan comprehensive ESG assessment untuk memastikan pengelolaan dana haji yang berkelanjutan dan sesuai prinsip syariah.
 
-### 🌟 **Vision**
-Menciptakan sistem manajemen keuangan haji yang berkelanjutan, transparan, dan optimal melalui teknologi AI terdepan.
-
-### 🎯 **Mission**
-- Mengoptimalkan return investasi dana haji dengan tetap mematuhi prinsip syariah
-- Menyediakan analisis prediktif untuk perencanaan keuangan jangka panjang
-- Memastikan sustainabilitas dana untuk generasi mendatang
-- Memberikan transparansi penuh dalam pengelolaan dana haji
+### 🌟 **Key Objectives**
+- **📊 Real-time Monitoring**: Pemantauan KPI finansial secara real-time
+- **🔮 Predictive Analytics**: Proyeksi finansial berbasis machine learning
+- **🎯 AI Optimization**: Optimisasi portofolio menggunakan genetic algorithms
+- **🌱 ESG Compliance**: Assessment dan monitoring sustainability metrics
+- **📈 Strategic Planning**: Insights untuk perencanaan strategis jangka panjang
 
 ---
 
-## ✨ Key Features
+## ✨ Core Features
 
-### 🧮 **Advanced Actuarial Modeling**
-- **📈 Predictive Analytics**: Model prediksi biaya haji masa depan
-- **📊 Risk Assessment**: Analisis risiko keuangan komprehensif
-- **🎯 Scenario Planning**: Simulasi berbagai skenario ekonomi
-- **📉 Volatility Analysis**: Analisis volatilitas pasar dan dampaknya
+### 📊 **Executive Dashboard**
+- **Real-time KPI Monitoring**: Sustainability Index, Total Cost, Investment Return, Risk Level
+- **Performance Indicators**: Trend analysis dengan perubahan year-over-year
+- **Scenario Analysis**: Pessimistic, Baseline, dan Optimistic scenarios
+- **Alert System**: Real-time notifications untuk metrics kritis
+- **Portfolio Overview**: Visualisasi alokasi aset dan performance summary
 
-### 🤖 **Machine Learning Optimization**
-- **🔄 Portfolio Optimization**: Optimisasi portofolio investasi otomatis
-- **📱 Real-time Rebalancing**: Rebalancing otomatis berdasarkan kondisi pasar
-- **🎯 Performance Prediction**: Prediksi performa investasi menggunakan ML
-- **📊 Pattern Recognition**: Identifikasi pola pasar untuk optimasi timing
+### 🔮 **Financial Projections & Forecasting**
+- **Advanced Modeling**: Linear Trend, Machine Learning models
+- **Multi-year Projections**: Forecasting hingga 25 tahun ke depan
+- **Confidence Intervals**: Statistical confidence levels (95%-99%)
+- **Scenario Modeling**: Multiple scenario analysis untuk strategic planning
+- **Model Performance**: R-squared tracking dan model comparison
 
-### ☪️ **Islamic Finance Compliance**
-- **✅ Shariah Screening**: Screening otomatis investasi halal
-- **📋 Compliance Monitoring**: Monitoring kepatuhan syariah real-time
-- **📝 Audit Trail**: Jejak audit lengkap untuk transparansi
-- **🏛️ Regulatory Compliance**: Kepatuhan terhadap regulasi OJK dan DSN-MUI
+### 🎯 **AI-Powered Optimization**
+- **Genetic Algorithms**: Advanced optimization untuk portfolio allocation
+- **Multi-objective Optimization**: Return maximization, risk minimization, sustainability
+- **Parameter Tuning**: Population size, generations, mutation/crossover rates
+- **Real-time Results**: Instant optimization results dengan performance analysis
+- **Recommendations Engine**: AI-generated actionable recommendations
 
-### 🚨 **Intelligent Alert System**
-- **⚠️ Sustainability Alerts**: Peringatan dini sustainability index
-- **📊 Performance Warnings**: Alert performa di bawah benchmark
-- **💰 Cost Anomalies**: Deteksi anomali biaya operasional
-- **📈 Market Opportunities**: Identifikasi peluang investasi
+### 📈 **Advanced Analytics**
+- **Trend Analysis**: Historical dan predictive trend analysis
+- **Statistical Modeling**: Comprehensive statistical analysis tools
+- **AI-Generated Insights**: Machine learning insights untuk decision making
+- **Risk Assessment**: Multi-dimensional risk evaluation
+- **Performance Benchmarking**: Comparison against targets dan industry standards
 
----
-
-## 🧠 AI & Machine Learning
+### 🌱 **ESG & Sustainability**
+- **ESG Scoring**: Environmental (70), Social (79), Governance (86)
+- **Islamic Compliance**: Shariah-compliant investment screening
+- **Sustainability Metrics**: Comprehensive sustainability assessment
+- **Intergenerational Equity**: Long-term sustainability analysis
+- **SDG Alignment**: Alignment dengan Sustainable Development Goals
 
 ### 🤖 **RAG Assistant**
-Platform dilengkapi dengan **Retrieval-Augmented Generation (RAG) Assistant** yang dapat:
-- 💬 Menjawab pertanyaan kompleks tentang keuangan haji
-- 📊 Menganalisis data finansial secara real-time
-- 📋 Memberikan rekomendasi strategis
-- 🔍 Mencari informasi dari knowledge base yang luas
-
-### 🧮 **Machine Learning Models**
-- **Time Series Forecasting**: LSTM/GRU untuk prediksi BPIH
-- **Portfolio Optimization**: Modern Portfolio Theory + Shariah constraints
-- **Risk Modeling**: Monte Carlo simulations untuk stress testing
-- **Anomaly Detection**: Isolation Forest untuk deteksi fraud
+- **Intelligent Q&A**: AI assistant untuk financial queries
+- **Document Retrieval**: Knowledge base integration
+- **Real-time Guidance**: Contextual help dan recommendations
+- **Multi-language Support**: Bahasa Indonesia dan English
 
 ---
 
-## 📊 Dashboard Metrics
+## 📊 Executive Dashboard
 
-### 📈 **Key Performance Indicators**
+### 🎯 **Current Key Performance Indicators**
 
-| Metric | Current Value | Status | Trend |
-|--------|---------------|--------|--------|
-| 💰 **Current BPIH** | Rp 91,493,896 | ↓ -3.2% | Declining |
-| 📊 **Current Benefit Value** | Rp 30,934,497 | ↓ -19.5% | Concerning |
-| 🌱 **Sustainability Index** | 33.8% | 🔴 Critical | Needs Attention |
-| 📈 **Avg Cost Growth** | 6.7%/year | ↗ Trending | Monitored |
+| **Metric** | **Current Value** | **Status** | **Change** |
+|------------|------------------|------------|------------|
+| 🌱 **Sustainability Index** | **47.9%** | ⚠️ Warning | → 0.4% |
+| 💰 **Total Cost** | **Rp 0.2B** | 📈 Rising | ↗ 4.2% |
+| 📊 **Investment Return** | **1.7%** | 🔴 Below Target | Target: 7.0% |
+| ⚠️ **Risk Level** | **3** | 🟢 Low | Stable |
 
-### 🚨 **Critical Sustainability Alert**
+### 📋 **Scenario Analysis Results**
+
+| **Scenario** | **Final Sustainability** | **Description** | **Key Assumptions** |
+|--------------|--------------------------|-----------------|-------------------|
+| 😰 **Pessimistic** | **26.5%** | Conservative assumptions | BPIH: +15%, Benefit: -10% |
+| 📊 **Baseline** | **33.9%** | Current trend continuation | BPIH: +0%, Benefit: +0% |
+| 😊 **Optimistic** | **41.0%** | Favorable conditions | BPIH: -5%, Benefit: +15% |
+
+### 🚨 **Real-time Alerts**
 ```
-⚠️ CRITICAL SUSTAINABILITY ALERT
-Current sustainability index is below 40%. Immediate intervention required!
-
-Recommendations:
-• Consider increasing investment returns
-• Optimize operational costs  
-• Review benefit distribution policy
+⚠️ WARNING: Investment returns (1.7%) below target
+📋 Recommended Action: Review investment strategy
 ```
+
+---
+
+## 🔮 Financial Projections
+
+### 📈 **10-Year BPIH Projection (Linear Trend Model)**
+
+| **Metric** | **Value** |
+|------------|-----------|
+| 📊 **Current Value** | Rp 93,509,051 |
+| 🔮 **Projected Value (10Y)** | Rp 146,828,701 |
+| 📈 **Total Change** | +57.0% |
+| 📊 **Annual Growth Rate** | +5.7% |
+| 🎯 **Model Performance (R²)** | 0.553 |
+| 📏 **Confidence Level** | 95% |
+
+### ⚙️ **Forecasting Controls**
+- **Models Available**: Linear Trend, ARIMA, Machine Learning
+- **Projection Range**: 5-25 years
+- **Confidence Levels**: 90%-99%
+- **Scenario Testing**: Multiple assumption sets
+
+---
+
+## 🎯 AI Optimization
+
+### 🧬 **Genetic Algorithm Configuration**
+```python
+Algorithm: Genetic Algorithm - Portfolio Optimization
+Population Size: 50-500
+Generations: 50-1000
+Mutation Rate: 0.01-0.50
+Crossover Rate: 0.50-1.00
+```
+
+### 🎯 **Multi-Objective Optimization**
+- **Return Maximization**: Weight 0.0-1.0
+- **Risk Minimization**: Weight 0.0-1.0  
+- **Sustainability Enhancement**: Weight 0.0-1.0
+
+### 📊 **Optimization Results**
+- Real-time algorithm execution
+- Performance analysis dashboard
+- Actionable recommendations
+- Portfolio rebalancing suggestions
+
+---
+
+## 📈 Advanced Analytics
+
+### 📊 **Current Analytics Overview**
+| **Metric** | **Value** | **Status** |
+|------------|-----------|------------|
+| 🌱 **Sustainability Index** | Variable | Dynamic monitoring |
+| 💰 **Investment ROI** | Variable | Target: 6.0% |
+| 💸 **Total Cost** | Rp 170,950,979 | Increasing trend |
+| ⚠️ **Risk Level** | 🟢 Low | 0.0% risk |
+
+### 🤖 **AI-Generated Insights**
+- **✅ Healthy Sustainability**: Dynamic sustainability monitoring dengan recommendations
+- **📈 Rising Cost Trend**: Cost increase analysis (Rp 5,186,097/year) dengan containment strategies
+- **🎯 Performance Optimization**: Continuous improvement recommendations
+
+### 📊 **Analytics Capabilities**
+- Time series analysis (2015-2025)
+- Multi-metric correlation analysis
+- Confidence interval modeling (90%-99%)
+- Smoothing algorithms untuk trend analysis
+
+---
+
+## 🌱 ESG Sustainability
+
+### 🏆 **ESG Scoring Overview**
+
+| **Category** | **Score** | **Grade** | **Status** |
+|--------------|-----------|-----------|------------|
+| 🌍 **Environmental** | **70** | **B** | Needs improvement |
+| 👥 **Social** | **79** | **B+** | Good performance |
+| 🏛️ **Governance** | **86** | **A** | Excellent |
+| ⭐ **Overall ESG** | **78** | **B+** | Strong performance |
+
+### 🌍 **Environmental Recommendations**
+- **Green Investment Ratio**: Score 60 - Needs improvement
+- **Renewable Energy Exposure**: Score 65 - Needs improvement
+
+### ⚙️ **Sustainability Controls**
+- **Assessment Types**: ESG Overview, Islamic Compliance, SDG Alignment
+- **Reporting Periods**: Quarterly, Semi-annual, Annual
+- **Stakeholder Focus**: Current Pilgrims, Future Pilgrims
+- **ESG Weighting**: Customizable environmental, social, governance weights
 
 ---
 
@@ -120,25 +212,31 @@ Recommendations:
 
 <div align="center">
 
-| **Frontend** | **Backend** | **AI/ML** | **Database** | **Deployment** |
+| **Frontend** | **AI/ML** | **Analytics** | **Backend** | **Deployment** |
 |:---:|:---:|:---:|:---:|:---:|
-| ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) | ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat-square&logo=sqlite&logoColor=white) | ![Streamlit Cloud](https://img.shields.io/badge/Streamlit%20Cloud-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
-| Plotly | Pandas | Scikit-learn | PostgreSQL | Docker |
-| HTML/CSS | NumPy | LangChain | Redis | AWS |
+| ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) | ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) | ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white) | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | ![Streamlit Cloud](https://img.shields.io/badge/Streamlit%20Cloud-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
+| HTML/CSS | Scikit-learn | Pandas | NumPy | Docker |
+| JavaScript | LangChain | Matplotlib | SQLite | AWS |
 
 </div>
 
-### 🔧 **Core Dependencies**
+### 🧠 **AI & Machine Learning Stack**
 ```python
-streamlit >= 1.28.0
-pandas >= 2.0.0
-numpy >= 1.24.0
-plotly >= 5.15.0
-scikit-learn >= 1.3.0
-tensorflow >= 2.13.0
-langchain >= 0.0.350
-streamlit-authenticator >= 0.2.3
-yfinance >= 0.2.18
+# Core ML Libraries
+scikit-learn >= 1.3.0    # Machine Learning algorithms
+tensorflow >= 2.13.0     # Deep Learning models
+numpy >= 1.24.0          # Numerical computing
+pandas >= 2.0.0          # Data manipulation
+
+# Optimization & Analytics
+scipy >= 1.10.0          # Scientific computing
+plotly >= 5.15.0         # Interactive visualizations
+streamlit >= 1.28.0      # Web application framework
+
+# AI Assistant (RAG)
+langchain >= 0.0.350     # LLM orchestration
+openai >= 1.0.0          # GPT integration
+chromadb >= 0.4.0        # Vector database
 ```
 
 ---
@@ -146,11 +244,11 @@ yfinance >= 0.2.18
 ## 🚀 Quick Start
 
 ### 📋 Prerequisites
-- Python 3.9+ 
+- Python 3.9+
 - pip package manager
 - Git
 
-### ⚡ Installation
+### ⚡ Installation & Setup
 
 1. **Clone Repository**
    ```bash
@@ -158,15 +256,12 @@ yfinance >= 0.2.18
    cd hajj_mgt_system
    ```
 
-2. **Setup Environment**
+2. **Create Virtual Environment**
    ```bash
    python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # macOS/Linux
-   source venv/bin/activate
+   source venv/bin/activate  # Linux/macOS
+   # atau
+   venv\Scripts\activate     # Windows
    ```
 
 3. **Install Dependencies**
@@ -174,14 +269,11 @@ yfinance >= 0.2.18
    pip install -r requirements.txt
    ```
 
-4. **Configure Environment**
+4. **Configure Environment Variables**
    ```bash
    # Create .env file
-   cp .env.example .env
-   
-   # Add your API keys
-   OPENAI_API_KEY=your_openai_key
-   FINANCIAL_DATA_API=your_financial_api_key
+   OPENAI_API_KEY=your_openai_api_key
+   FINANCIAL_API_KEY=your_financial_data_api
    ```
 
 5. **Run Application**
@@ -190,88 +282,15 @@ yfinance >= 0.2.18
    ```
 
 6. **Access Dashboard**
-   ```
-   🌐 Local: http://localhost:8501
-   🚀 Live: https://hajj-mgt-system-mshadianto.streamlit.app/
-   ```
+   - **Local**: http://localhost:8501
+   - **Live Demo**: https://hajj-mgt-system-mshadianto.streamlit.app/
 
----
-
-## 📱 Application Modules
-
-### 🏠 **Dashboard**
-- Real-time financial metrics
-- Sustainability index monitoring
-- Performance analytics
-- Critical alerts system
-
-### 📊 **Projections**
-- BPIH future projections
-- Investment return forecasting
-- Cash flow analysis
-- Scenario modeling
-
-### ⚙️ **Optimization**
-- Portfolio optimization engine
-- Asset allocation strategies
-- Risk-adjusted returns
-- Shariah-compliant screening
-
-### 🤖 **RAG Assistant**
-- Intelligent Q&A system
-- Financial analysis support
-- Regulatory guidance
-- Best practices recommendations
-
-### 📈 **Analytics**
-- Performance analytics
-- Trend analysis
-- Comparative studies
-- Risk metrics
-
-### 🧪 **Simulation**
-- Monte Carlo simulations
-- Stress testing scenarios
-- Market shock analysis
-- Sensitivity analysis
-
-### 🌱 **Sustainability**
-- ESG compliance monitoring
-- Sustainability scoring
-- Impact measurement
-- Long-term viability assessment
-
-### 📋 **Planning**
-- Strategic planning tools
-- Budget forecasting
-- Resource allocation
-- Timeline management
-
----
-
-## 🔬 Advanced Analytics
-
-### 📊 **Financial Modeling**
-```python
-# Example: Sustainability Index Calculation
-def calculate_sustainability_index(current_assets, projected_liabilities, 
-                                 market_volatility, regulatory_compliance):
-    """
-    Advanced sustainability scoring algorithm
-    considering multiple financial and regulatory factors
-    """
-    base_score = (current_assets / projected_liabilities) * 100
-    volatility_penalty = market_volatility * 10
-    compliance_bonus = regulatory_compliance * 5
-    
-    return max(0, min(100, base_score - volatility_penalty + compliance_bonus))
-```
-
-### 🤖 **AI-Driven Insights**
-- **Predictive Modeling**: ARIMA, LSTM untuk forecasting
-- **Risk Assessment**: VaR, CVaR calculations
-- **Optimization**: Genetic algorithms untuk portfolio optimization
-- **NLP Analysis**: Sentiment analysis dari berita ekonomi
+### 🎯 **Quick Navigation**
+- 📊 **Dashboard**: Real-time monitoring dan KPI tracking
+- 🔮 **Projections**: Financial forecasting dan scenario analysis  
+- 🎯 **Optimization**: AI-powered portfolio optimization
+- 📈 **Analytics**: Advanced analytics dan insights
+- 🌱 **Sustainability**: ESG assessment dan monitoring
 
 ---
 
@@ -288,50 +307,53 @@ def calculate_sustainability_index(current_assets, projected_liabilities,
 
 </div>
 
-### 🎓 **Expertise**
-- **Financial Engineering**: Advanced quantitative finance and risk management
-- **AI & Machine Learning**: RAG systems, time series forecasting, optimization algorithms
-- **Islamic Finance**: Shariah-compliant investment strategies and products
-- **Regulatory Compliance**: Deep understanding of Indonesian financial regulations
+### 🎓 **Technical Expertise**
+- **🤖 Artificial Intelligence**: RAG systems, LLM integration, Agentic AI
+- **📊 Financial Analytics**: Quantitative analysis, risk modeling, ESG assessment
+- **🔮 Predictive Modeling**: Time series forecasting, scenario analysis
+- **🎯 Optimization**: Genetic algorithms, multi-objective optimization
+- **☪️ Islamic Finance**: Shariah-compliant investment strategies
 
 ### 🏛️ **Professional Background**
 - **Audit Committee Member** - Hajj Fund Management Agency
-- **AI Enthusiast** - Specializing in Retrieval-Augmented Generation (RAG)
-- **Financial Analyst** - Focus on sustainable finance and ESG compliance
+- **AI Research Enthusiast** - Focus on RAG dan Agentic AI systems
+- **Financial Technology Specialist** - Sustainable finance dan ESG compliance
 
 ---
 
 ## 🤝 Contributing
 
-Kami menyambut kontribusi dari komunitas! Berikut cara berkontribusi:
+Kontribusi dari komunitas sangat diterima! Berikut cara berkontribusi:
 
-### 🐛 **Reporting Issues**
-1. Periksa [existing issues](https://github.com/mshadianto/hajj_mgt_system/issues)
-2. Buat issue baru dengan deskripsi detail
-3. Sertakan langkah reproduksi bug
-
-### 💡 **Feature Suggestions**
-1. Buka [feature request](https://github.com/mshadianto/hajj_mgt_system/issues/new)
-2. Jelaskan fitur yang diusulkan
-3. Berikan justifikasi business value
-
-### 💻 **Code Contributions**
+### 🐛 **Bug Reports**
 ```bash
-# Development setup
-git clone https://github.com/mshadianto/hajj_mgt_system.git
-cd hajj_mgt_system
-pip install -r requirements-dev.txt
+# Template untuk bug report
+- Environment: Python version, OS
+- Steps to reproduce
+- Expected vs actual behavior
+- Error messages/screenshots
+```
+
+### 💡 **Feature Requests**
+- ESG metrics enhancement
+- Additional forecasting models
+- New optimization algorithms
+- Advanced visualization features
+
+### 💻 **Development Workflow**
+```bash
+# Fork repository
+git clone https://github.com/yourusername/hajj_mgt_system.git
 
 # Create feature branch
-git checkout -b feature/amazing-feature
+git checkout -b feature/new-analytics-module
 
-# Make changes and test
+# Development setup
+pip install -r requirements-dev.txt
 pytest tests/
-flake8 .
-black .
 
-# Submit PR
-git push origin feature/amazing-feature
+# Submit pull request
+git push origin feature/new-analytics-module
 ```
 
 ---
@@ -344,27 +366,43 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Hajj Fund Management Agency** for domain expertise and guidance
-- **Islamic Finance Community** for Shariah compliance consultation  
-- **AI/ML Research Community** for advanced analytics methodologies
-- **Open Source Contributors** for excellent libraries and frameworks
+- **🏛️ Hajj Fund Management Agency** - Domain expertise dan regulatory guidance
+- **🤖 AI/ML Community** - Advanced algorithms dan methodologies  
+- **📊 Financial Analytics Community** - ESG frameworks dan best practices
+- **☪️ Islamic Finance Scholars** - Shariah compliance consultation
+- **🌱 Sustainability Experts** - ESG assessment frameworks
 
 ---
 
 <div align="center">
 
-### 📊 **Project Impact**
+### 📊 **Real-time System Status**
 
-![Sustainability](https://img.shields.io/badge/Sustainability-Index%2033.8%25-critical?style=for-the-badge)
-![Compliance](https://img.shields.io/badge/Shariah-Compliant-success?style=for-the-badge)
-![AI](https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge)
+![Sustainability](https://img.shields.io/badge/Sustainability_Index-47.9%25-yellow?style=for-the-badge)
+![ESG Score](https://img.shields.io/badge/ESG_Score-78%2FB+-success?style=for-the-badge)
+![AI Powered](https://img.shields.io/badge/AI-Optimization_Active-blue?style=for-the-badge)
+![Real-time](https://img.shields.io/badge/Status-Real--time_Monitoring-green?style=for-the-badge)
 
 ---
 
-**⭐ If this project helps improve Hajj fund sustainability, please give it a star! ⭐**
+### 🎯 **Key Achievements**
 
-**🤲 Built with dedication for the betterment of Hajj fund management 🤲**
+- **📊 Real-time Monitoring**: 9 core KPIs tracked continuously
+- **🔮 Advanced Forecasting**: 10-year projections dengan 95% confidence
+- **🎯 AI Optimization**: Genetic algorithm untuk portfolio optimization  
+- **🌱 ESG Compliance**: Grade B+ overall sustainability rating
+- **📈 Actionable Insights**: AI-generated recommendations untuk decision making
 
-*"Enhancing financial sustainability through AI-driven insights and Islamic finance principles"*
+---
+
+**⭐ Star this repository if it helps improve Hajj fund sustainability! ⭐**
+
+**🤲 Dedicated to enhancing financial sustainability for future generations 🤲**
+
+*"Building intelligent systems for sustainable Hajj fund management"*
+
+---
+
+*Dashboard last updated: 2025-06-30 07:43:54*
 
 </div>
