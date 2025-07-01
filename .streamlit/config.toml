@@ -1,66 +1,20 @@
 # .streamlit/config.toml
-# Clean Streamlit Configuration for Hajj Financial Dashboard
-# Author: MS Hadianto
-
-[global]
-# Development mode settings
-developmentMode = false
-showWarningOnDirectExecution = false
+# Clean & Compatible for Streamlit Cloud
 
 [server]
-# Server configuration
 port = 8501
-enableCORS = true
-enableXsrfProtection = true
+enableCORS = false
+enableXsrfProtection = false
+headless = true
 maxUploadSize = 200
 maxMessageSize = 200
-enableWebsocketCompression = true
-
-# Production settings
-headless = false
-runOnSave = false
-allowRunOnSave = false
-
-[browser]
-# Browser settings
-serverAddress = "localhost"
-gatherUsageStats = false
-serverPort = 8501
 
 [theme]
-# Custom theme for Hajj Financial Dashboard
 primaryColor = "#2E3192"
-backgroundColor = "#FFFFFF" 
+backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#F0F2F6"
 textColor = "#262730"
 font = "sans serif"
 
-# Optional: Dark mode theme
-# primaryColor = "#1BFFFF"
-# backgroundColor = "#0F172A"
-# secondaryBackgroundColor = "#1E293B"
-# textColor = "#FAFAFA"
-
-[client]
-# Client-side settings
-toolbarMode = "viewer"
-showErrorDetails = true
-
-[runner]
-# Performance settings
-magicEnabled = true
-installTracer = false
-fixMatplotlib = true
-postScriptGC = true
-fastReruns = true
-enforceSerializableSessionState = true
-
-[logger]
-# Logging configuration  
-level = "info"
-messageFormat = "%(asctime)s %(message)s"
-
-[deprecation]
-# Disable deprecation warnings for cleaner output
-showPyplotGlobalUse = false
-showfileUploaderEncoding = false
+[browser]
+gatherUsageStats = false
