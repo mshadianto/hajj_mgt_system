@@ -168,22 +168,30 @@ class FinancialProjector:
             'model': model
         }
     
-    def polynomial_trend_projection(self, column, years, degree=2):
+    def polynomial_trend_projection(self, column, years, degree=2, conf_level=95):
         X = np.array(self.data.index).reshape(-1, 1)
         y = self.data[column].values
-        
+
         poly_features = PolynomialFeatures(degree=degree)
         X_poly = poly_features.fit_transform(X)
-        
+
         model = LinearRegression()
         model.fit(X_poly, y)
-        
+
         future_X = np.array(range(len(self.data), len(self.data) + years)).reshape(-1, 1)
         future_X_poly = poly_features.transform(future_X)
         projections = model.predict(future_X_poly)
-        
+
+        # Calculate confidence intervals
+        residuals = y - model.predict(X_poly)
+        std_error = np.sqrt(np.sum(residuals**2) / (len(y) - degree - 1))
+        z_score = stats.norm.ppf(1 - (1 - conf_level/100) / 2)
+        margin_error = z_score * std_error
+
         return {
             'projections': projections,
+            'lower_bound': projections - margin_error,
+            'upper_bound': projections + margin_error,
             'r_squared': model.score(X_poly, y),
             'model': model,
             'poly_features': poly_features
@@ -242,12 +250,13 @@ with tab1:
             """, unsafe_allow_html=True)
             
         elif projection_model == "Polynomial Trend":
-            results = projector.polynomial_trend_projection(metric_to_project, projection_years)
+            results = projector.polynomial_trend_projection(metric_to_project, projection_years, conf_level=confidence_level)
             st.markdown(f"""
             <div class="model-performance">
                 <h4>📊 Polynomial Trend Model Performance</h4>
                 <p><strong>R-squared:</strong> {results.get('r_squared', 0):.3f}</p>
                 <p><strong>Model Type:</strong> Polynomial (degree 2)</p>
+                <p><strong>Confidence Level:</strong> {confidence_level}%</p>
                 <p><strong>Flexibility:</strong> Higher curve fitting</p>
             </div>
             """, unsafe_allow_html=True)
@@ -318,7 +327,24 @@ with tab1:
 
 with tab2:
     st.markdown("## 🎯 Scenario Modeling & Analysis")
-    
+
+    # Custom Scenario Builder
+    with st.expander("🔧 Create Custom Scenario", expanded=False):
+        st.markdown("**Build Your Own Scenario:**")
+        col_custom1, col_custom2 = st.columns(2)
+
+        with col_custom1:
+            custom_name = st.text_input("Scenario Name", "My Custom Scenario", key="custom_scenario_name")
+            custom_bpih_adj = st.slider("BPIH Adjustment (%)", -20, 30, 0, key="custom_bpih") / 100 + 1
+            custom_bipih_adj = st.slider("Bipih Adjustment (%)", -20, 30, 0, key="custom_bipih") / 100 + 1
+
+        with col_custom2:
+            custom_description = st.text_input("Description", "User-defined scenario", key="custom_desc")
+            custom_benefit_adj = st.slider("Benefit Adjustment (%)", -30, 30, 0, key="custom_benefit") / 100 + 1
+
+        include_custom = st.checkbox("Include Custom Scenario in Analysis", value=False, key="include_custom")
+
+    # Base scenario parameters
     scenario_params = {
         'pessimistic': {
             'name': 'Pessimistic Scenario',
@@ -331,11 +357,19 @@ with tab2:
             'adjustments': {'BPIH': 1.0, 'Bipih': 1.0, 'NilaiManfaat': 1.0, 'color': '#3498db'}
         },
         'optimistic': {
-            'name': 'Optimistic Scenario', 
+            'name': 'Optimistic Scenario',
             'description': 'Cost efficiency, higher returns.',
             'adjustments': {'BPIH': 0.95, 'Bipih': 0.93, 'NilaiManfaat': 1.15, 'color': '#27ae60'}
         }
     }
+
+    # Add custom scenario if selected
+    if include_custom:
+        scenario_params['custom'] = {
+            'name': custom_name,
+            'description': custom_description,
+            'adjustments': {'BPIH': custom_bpih_adj, 'Bipih': custom_bipih_adj, 'NilaiManfaat': custom_benefit_adj, 'color': '#9b59b6'}
+        }
     
     scenario_projections = {}
     

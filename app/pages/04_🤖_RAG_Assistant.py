@@ -109,6 +109,33 @@ class HajjFinanceKnowledgeBase:
         self.financial_regulations = self._load_regulations()
         self.islamic_principles = self._load_islamic_principles()
         self.faqs = self._load_faqs()
+        # Initialize TF-IDF search index
+        self._build_search_index()
+
+    def _build_search_index(self):
+        """Build TF-IDF search index for semantic search"""
+        from sklearn.feature_extraction.text import TfidfVectorizer
+
+        # Combine document content for indexing
+        self.doc_texts = []
+        for doc in self.knowledge_docs:
+            # Combine title, content, and tags for better matching
+            combined = f"{doc['title']} {doc['content']} {' '.join(doc['tags'])}"
+            self.doc_texts.append(combined)
+
+        # Create TF-IDF vectorizer with Indonesian-friendly settings
+        self.vectorizer = TfidfVectorizer(
+            lowercase=True,
+            ngram_range=(1, 2),  # Use unigrams and bigrams
+            max_features=5000,
+            stop_words=None  # Keep Indonesian words
+        )
+
+        # Fit and transform documents
+        if self.doc_texts:
+            self.tfidf_matrix = self.vectorizer.fit_transform(self.doc_texts)
+        else:
+            self.tfidf_matrix = None
     
     def _load_knowledge_base(self) -> List[Dict]:
         """Load comprehensive hajj financial knowledge"""
@@ -494,41 +521,31 @@ class HajjFinanceKnowledgeBase:
                 "category": "governance"
             }
         ]
-    
+
     def search_knowledge(self, query: str, top_k: int = 3) -> List[Dict]:
-        """Search knowledge base using simple text matching"""
-        query_lower = query.lower()
+        """Search knowledge base using TF-IDF semantic search"""
+        from sklearn.metrics.pairwise import cosine_similarity
+
+        if self.tfidf_matrix is None or len(self.knowledge_docs) == 0:
+            return []
+
+        # Transform query using the same vectorizer
+        query_vec = self.vectorizer.transform([query.lower()])
+
+        # Calculate cosine similarity
+        similarities = cosine_similarity(query_vec, self.tfidf_matrix)[0]
+
+        # Create results with similarity scores
         results = []
-        
-        for doc in self.knowledge_docs:
-            # Simple scoring based on keyword matches
-            content_lower = doc['content'].lower()
-            title_lower = doc['title'].lower()
-            tags_lower = ' '.join(doc['tags']).lower()
-            
-            score = 0
-            
-            # Title matches (highest weight)
-            if query_lower in title_lower:
-                score += 3
-            
-            # Content matches
-            content_matches = content_lower.count(query_lower)
-            score += content_matches * 0.5
-            
-            # Tag matches
-            for word in query_lower.split():
-                if word in tags_lower:
-                    score += 1
-            
-            if score > 0:
-                doc_copy = doc.copy()
-                doc_copy['relevance_score'] = score
+        for idx, score in enumerate(similarities):
+            if score > 0.01:  # Minimum threshold
+                doc_copy = self.knowledge_docs[idx].copy()
+                doc_copy['relevance_score'] = float(score)
                 results.append(doc_copy)
-        
-        # Sort by relevance score
+
+        # Sort by relevance score (similarity)
         results.sort(key=lambda x: x['relevance_score'], reverse=True)
-        
+
         return results[:top_k]
 
 # RAG Assistant Class
@@ -541,24 +558,32 @@ class RAGAssistant:
         self.kb = knowledge_base
         self.conversation_context = []
     
-    def process_query(self, user_query: str) -> Dict[str, Any]:
-        """Process user query and generate response"""
-        
+    def process_query(self, user_query: str, response_style: str = 'Professional', language: str = 'Indonesian') -> Dict[str, Any]:
+        """Process user query and generate response
+
+        Args:
+            user_query: The user's question
+            response_style: One of 'Professional', 'Detailed', 'Concise'
+            language: Response language (Indonesian, English, Arabic)
+        """
+
         # Search relevant knowledge
         relevant_docs = self.kb.search_knowledge(user_query, top_k=3)
-        
+
         # Analyze query intent
         intent = self._analyze_intent(user_query)
-        
-        # Generate response based on intent and retrieved knowledge
-        response = self._generate_response(user_query, relevant_docs, intent)
-        
+
+        # Generate response based on intent, style, and retrieved knowledge
+        response = self._generate_response(user_query, relevant_docs, intent, response_style, language)
+
         return {
             'response': response,
             'sources': relevant_docs,
             'intent': intent,
             'confidence': self._calculate_confidence(relevant_docs),
-            'timestamp': datetime.now().isoformat()
+            'timestamp': datetime.now().isoformat(),
+            'style': response_style,
+            'language': language
         }
     
     def _analyze_intent(self, query: str) -> str:
@@ -582,14 +607,33 @@ class RAGAssistant:
         else:
             return 'general_inquiry'
     
-    def _generate_response(self, query: str, relevant_docs: List[Dict], intent: str) -> str:
-        """Generate contextual response"""
-        
+    def _generate_response(self, query: str, relevant_docs: List[Dict], intent: str,
+                           response_style: str = 'Professional', language: str = 'Indonesian') -> str:
+        """Generate contextual response based on style and language settings"""
+
         if not relevant_docs:
             return self._get_fallback_response(intent)
-        
-        # Start with greeting and context
-        response = f"🤖 **AI Financial Assistant**: Berdasarkan analisis pengetahuan saya tentang keuangan haji...\n\n"
+
+        # Determine content length based on style
+        if response_style == 'Concise':
+            max_content_length = 200
+            include_recommendations = False
+        elif response_style == 'Detailed':
+            max_content_length = 800
+            include_recommendations = True
+        else:  # Professional
+            max_content_length = 400
+            include_recommendations = True
+
+        # Language-specific greeting
+        greetings = {
+            'Indonesian': "🤖 **AI Financial Assistant**: Berdasarkan analisis pengetahuan saya tentang keuangan haji...\n\n",
+            'English': "🤖 **AI Financial Assistant**: Based on my analysis of hajj financial knowledge...\n\n",
+            'Arabic': "🤖 **المساعد المالي الذكي**: بناءً على تحليلي للمعرفة المالية للحج...\n\n"
+        }
+
+        # Start with greeting
+        response = greetings.get(language, greetings['Indonesian'])
         
         # Add intent-specific response
         if intent == 'calculation':
@@ -820,8 +864,8 @@ if submit_button and user_query:
     assistant = get_rag_assistant()
     
     with st.spinner("🧠 AI sedang menganalisis dan mencari informasi..."):
-        # Process the query
-        result = assistant.process_query(user_query)
+        # Process the query with user settings
+        result = assistant.process_query(user_query, response_style=response_style, language=language)
         
         # Add to chat history
         st.session_state.chat_history.append({

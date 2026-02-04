@@ -715,9 +715,68 @@ if assessment_type == "ESG Overview":
         </div>
         """, unsafe_allow_html=True)
     
+    # Industry Benchmarking
+    st.markdown("### 📈 Industry Benchmarking")
+
+    # Define benchmark data
+    benchmarks = {
+        'Islamic Finance Average': {'environmental': 68, 'social': 75, 'governance': 82, 'overall': 75},
+        'Global Pension Fund Average': {'environmental': 72, 'social': 70, 'governance': 78, 'overall': 73},
+        'Regional Hajj Funds Average': {'environmental': 62, 'social': 72, 'governance': 80, 'overall': 71},
+        'Your Fund': {'environmental': env_score, 'social': social_score, 'governance': governance_score, 'overall': weighted_score}
+    }
+
+    # Create comparison chart
+    benchmark_df = pd.DataFrame(benchmarks).T
+    benchmark_df = benchmark_df.reset_index()
+    benchmark_df.columns = ['Fund Type', 'Environmental', 'Social', 'Governance', 'Overall']
+
+    fig_benchmark = go.Figure()
+    categories = ['Environmental', 'Social', 'Governance', 'Overall']
+    colors = {'Islamic Finance Average': '#3498db', 'Global Pension Fund Average': '#9b59b6',
+              'Regional Hajj Funds Average': '#f39c12', 'Your Fund': '#27ae60'}
+
+    for fund_type in benchmark_df['Fund Type']:
+        values = benchmark_df[benchmark_df['Fund Type'] == fund_type][categories].values[0].tolist()
+        fig_benchmark.add_trace(go.Bar(
+            name=fund_type,
+            x=categories,
+            y=values,
+            marker_color=colors.get(fund_type, '#95a5a6')
+        ))
+
+    fig_benchmark.update_layout(
+        title="ESG Performance vs Industry Benchmarks",
+        barmode='group',
+        yaxis_title="Score",
+        legend=dict(orientation='h', yanchor='bottom', y=1.02)
+    )
+
+    st.plotly_chart(fig_benchmark, use_container_width=True)
+
+    # Show relative performance
+    col_bench1, col_bench2, col_bench3 = st.columns(3)
+
+    with col_bench1:
+        diff_islamic = weighted_score - benchmarks['Islamic Finance Average']['overall']
+        st.metric("vs Islamic Finance Avg", f"{weighted_score:.0f}",
+                 delta=f"{diff_islamic:+.1f} pts")
+
+    with col_bench2:
+        diff_global = weighted_score - benchmarks['Global Pension Fund Average']['overall']
+        st.metric("vs Global Pension Avg", f"{weighted_score:.0f}",
+                 delta=f"{diff_global:+.1f} pts")
+
+    with col_bench3:
+        diff_regional = weighted_score - benchmarks['Regional Hajj Funds Average']['overall']
+        st.metric("vs Regional Hajj Avg", f"{weighted_score:.0f}",
+                 delta=f"{diff_regional:+.1f} pts")
+
+    st.markdown("---")
+
     # ESG Factor Breakdown
     st.markdown("### 📊 ESG Factor Analysis")
-    
+
     tab1, tab2, tab3 = st.tabs(["🌍 Environmental", "👥 Social", "🏛️ Governance"])
     
     with tab1:

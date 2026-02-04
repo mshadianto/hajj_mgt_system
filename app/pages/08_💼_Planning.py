@@ -369,8 +369,39 @@ with st.sidebar:
 # Calculate planning parameters
 current_year = datetime.now().year
 years_to_hajj = target_hajj_year - current_year
-future_hajj_cost = planner.calculate_future_hajj_cost(years_to_hajj)
 monthly_surplus = monthly_income - monthly_expenses
+
+# Input validation
+validation_errors = []
+validation_warnings = []
+
+if monthly_expenses >= monthly_income:
+    validation_errors.append("Monthly expenses exceed or equal income. Please review your budget.")
+
+if years_to_hajj < 1:
+    validation_errors.append("Target hajj year must be at least 1 year from now.")
+
+if years_to_hajj > 25:
+    validation_warnings.append("Planning horizon exceeds 25 years. Projections may be less accurate.")
+
+if monthly_surplus < 500000:
+    validation_warnings.append("Low monthly surplus may make hajj savings challenging. Consider reviewing expenses.")
+
+if age + years_to_hajj > 70:
+    validation_warnings.append("Projected age at hajj exceeds 70. Consider an earlier target year if possible.")
+
+# Display validation messages
+if validation_errors:
+    for error in validation_errors:
+        st.error(f"**Validation Error:** {error}")
+    st.stop()
+
+if validation_warnings:
+    for warning in validation_warnings:
+        st.warning(f"**Note:** {warning}")
+
+# Calculate future costs (only if validation passed)
+future_hajj_cost = planner.calculate_future_hajj_cost(years_to_hajj)
 
 # Risk assessment
 risk_profile = planner.assess_risk_tolerance(age, monthly_income, dependents, investment_experience, years_to_hajj)

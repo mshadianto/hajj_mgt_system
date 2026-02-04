@@ -35,6 +35,7 @@ pytest tests/ -v --cov=app
 ### Application Structure
 - **Entry point**: `app/main.py` - Landing page and main dashboard
 - **Multi-page app**: `app/pages/` - Streamlit's convention for multi-page apps (numbered/emoji prefixed)
+- **Utilities**: `app/utils/` - Shared modules (shared.py, styles.py, export.py)
 - **Configuration**: `config/settings.py` - AppConfig class with thresholds and constants
 - **Database**: SQLite at `data/hajj_data.db`, initialized via `init_database.py`
 
@@ -55,12 +56,19 @@ pytest tests/ -v --cov=app
 - **RAG Stack**: LangChain + OpenAI + ChromaDB (requires OPENAI_API_KEY env var)
 - **Data**: Pandas, NumPy, SQLite
 
+### Utility Modules (app/utils/)
+- `shared.py` - Common functions: get_grade(), format_currency(), get_dashboard_colors(), calculate_sustainability_index()
+- `styles.py` - Consolidated CSS: get_base_styles(), get_header_gradient(), get_card_styles()
+- `export.py` - Export functions: export_to_csv(), export_to_excel(), generate_report_markdown()
+
 ### Configuration Files
 - `.streamlit/config.toml` - Streamlit server settings (port 8501, light theme)
 - `config/settings.py` - Application constants:
   - `CURRENT_HAJJ_COST`: 120,000,000 IDR
   - `DEFAULT_INFLATION_RATE`: 0.05
   - Sustainability thresholds: CRITICAL=40, WARNING=60, HEALTHY=80
+  - Investment targets: TARGET_ROI=0.07, risk thresholds
+  - Simulation defaults: MAX_SIMULATIONS=10000
 
 ### Data Flow
 - Raw data in `data/raw/` (CSV/Excel, e.g., `portfolio_sample.json`)

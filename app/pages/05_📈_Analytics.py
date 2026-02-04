@@ -99,32 +99,53 @@ class HajjFinancialAnalytics:
         self.risk_metrics = self._calculate_risk_metrics()
     
     def _calculate_financial_ratios(self):
-        """Calculate comprehensive financial ratios"""
+        """Calculate comprehensive financial ratios with column validation"""
         df = self.data.copy()
-        
+
         ratios = {}
-        
-        # Sustainability Ratios
+
+        # Validate required columns exist
+        required_cols = ['NilaiManfaat', 'BPIH', 'Bipih', 'Total_Cost', 'Year']
+        optional_cols = ['OperationalCost', 'InvestmentReturn', 'InflationRate']
+
+        for col in required_cols:
+            if col not in df.columns:
+                raise ValueError(f"Required column '{col}' not found in data")
+
+        # Sustainability Ratios (required columns)
         ratios['sustainability_index'] = (df['NilaiManfaat'] / df['BPIH']) * 100
         ratios['cost_coverage_ratio'] = df['NilaiManfaat'] / df['Total_Cost']
         ratios['benefit_efficiency'] = df['NilaiManfaat'] / (df['BPIH'] + df['Bipih'])
-        
-        # Growth Ratios
+
+        # Growth Ratios (required columns)
         ratios['bpih_growth'] = df['BPIH'].pct_change() * 100
         ratios['bipih_growth'] = df['Bipih'].pct_change() * 100
         ratios['benefit_growth'] = df['NilaiManfaat'].pct_change() * 100
         ratios['total_cost_growth'] = df['Total_Cost'].pct_change() * 100
-        
+
         # Efficiency Ratios
         ratios['cost_per_beneficiary'] = df['Total_Cost'] / 1000  # Assuming 1000 beneficiaries
         ratios['benefit_per_cost'] = df['NilaiManfaat'] / df['Total_Cost']
-        ratios['operational_efficiency'] = 100 - (df['OperationalCost'] / df['Total_Cost'] * 100)
-        
-        # Investment Performance Ratios
-        ratios['roi'] = df['InvestmentReturn'] * 100
-        ratios['real_return'] = (df['InvestmentReturn'] - df['InflationRate']) * 100
-        ratios['risk_adjusted_return'] = ratios['roi'] / (df['InvestmentReturn'].std() * 100 + 1e-6)
-        
+
+        # Optional: Operational efficiency (if column exists)
+        if 'OperationalCost' in df.columns:
+            ratios['operational_efficiency'] = 100 - (df['OperationalCost'] / df['Total_Cost'] * 100)
+        else:
+            ratios['operational_efficiency'] = pd.Series([np.nan] * len(df))
+
+        # Investment Performance Ratios (optional columns)
+        if 'InvestmentReturn' in df.columns:
+            ratios['roi'] = df['InvestmentReturn'] * 100
+            if 'InflationRate' in df.columns:
+                ratios['real_return'] = (df['InvestmentReturn'] - df['InflationRate']) * 100
+            else:
+                ratios['real_return'] = ratios['roi']  # Assume 0 inflation if not available
+            ratios['risk_adjusted_return'] = ratios['roi'] / (df['InvestmentReturn'].std() * 100 + 1e-6)
+        else:
+            ratios['roi'] = pd.Series([np.nan] * len(df))
+            ratios['real_return'] = pd.Series([np.nan] * len(df))
+            ratios['risk_adjusted_return'] = pd.Series([np.nan] * len(df))
+
         return pd.DataFrame(ratios, index=df['Year'])
     
     def _analyze_trends(self):
@@ -686,9 +707,74 @@ elif analysis_type == "Risk Analytics":
         fig_stress.add_hline(y=30, line_dash="dash", line_color="red", annotation_text="Critical Threshold")
         
         st.plotly_chart(fig_stress, use_container_width=True)
-        
+
         # Display stress test table
         st.dataframe(stress_df, use_container_width=True)
+
+    with scenario_tabs[1]:
+        st.markdown("#### 📊 Monte Carlo Simulation")
+        st.info("For comprehensive Monte Carlo simulation with advanced features, visit the dedicated **Simulation** page (06_Simulation).")
+
+        # Simple Monte Carlo preview
+        st.markdown("**Quick Monte Carlo Preview:**")
+        n_sims = 100
+        years = 5
+
+        # Run simple simulation
+        np.random.seed(42)
+        current_sustainability = (data_filtered['NilaiManfaat'].iloc[-1] / data_filtered['BPIH'].iloc[-1]) * 100
+
+        simulations = []
+        for _ in range(n_sims):
+            path = [current_sustainability]
+            for _ in range(years):
+                change = np.random.normal(0, 5)  # 5% volatility
+                path.append(max(0, path[-1] + change))
+            simulations.append(path[-1])
+
+        # Display results
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Mean Projection", f"{np.mean(simulations):.1f}%")
+        with col2:
+            st.metric("5th Percentile (VaR)", f"{np.percentile(simulations, 5):.1f}%")
+        with col3:
+            st.metric("95th Percentile", f"{np.percentile(simulations, 95):.1f}%")
+
+        # Histogram
+        fig_mc = px.histogram(x=simulations, nbins=20, title="Monte Carlo Distribution (Preview)")
+        fig_mc.add_vline(x=50, line_dash="dash", line_color="orange", annotation_text="Warning")
+        st.plotly_chart(fig_mc, use_container_width=True)
+
+    with scenario_tabs[2]:
+        st.markdown("#### 🎲 Scenario Planning")
+
+        st.markdown("**Custom Scenario Builder:**")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            bpih_change = st.slider("BPIH Change (%)", -20, 30, 0, key="sp_bpih")
+            benefit_change = st.slider("Benefit Change (%)", -30, 30, 0, key="sp_benefit")
+
+        with col2:
+            current_bpih = data_filtered['BPIH'].iloc[-1]
+            current_benefit = data_filtered['NilaiManfaat'].iloc[-1]
+
+            new_bpih = current_bpih * (1 + bpih_change/100)
+            new_benefit = current_benefit * (1 + benefit_change/100)
+            new_sustainability = (new_benefit / new_bpih) * 100
+            current_sus = (current_benefit / current_bpih) * 100
+
+            st.metric("Current Sustainability", f"{current_sus:.1f}%")
+            st.metric("Projected Sustainability", f"{new_sustainability:.1f}%",
+                     delta=f"{new_sustainability - current_sus:.1f}%")
+
+            if new_sustainability < 40:
+                st.error("Critical: Sustainability below threshold!")
+            elif new_sustainability < 60:
+                st.warning("Warning: Sustainability needs attention")
+            else:
+                st.success("Healthy: Sustainability is adequate")
 
 elif analysis_type == "Anomaly Detection":
     

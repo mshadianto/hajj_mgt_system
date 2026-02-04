@@ -826,18 +826,22 @@ st.markdown("""
 # Sidebar controls
 with st.sidebar:
     st.markdown("## ⚡ Simulation Parameters")
-    
-    # Simulation settings
+
+    # Simulation settings with increased capacity
     n_simulations = st.selectbox(
         "Number of Simulations",
-        [100, 500, 1000, 2000, 5000],  # Reduced max for stability
+        [100, 500, 1000, 2000, 5000, 10000],  # Increased max to 10000
         index=2
     )
-    
+
+    # Show warning for large simulations
+    if n_simulations >= 5000:
+        st.info(f"Large simulation ({n_simulations:,} runs) may take longer. Progress will be shown during execution.")
+
     time_horizon = st.slider(
         "Time Horizon (Years)",
         min_value=3,
-        max_value=15,
+        max_value=20,  # Increased max from 15 to 20
         value=8
     )
     
@@ -909,9 +913,9 @@ def load_simulation_data():
     
     df = pd.DataFrame(data)
     
-    # Validate data
+    # Validate data - using non-deprecated pandas methods
     for col in ['BPIH', 'Bipih', 'NilaiManfaat']:
-        df[col] = df[col].fillna(method='ffill').fillna(method='bfill')
+        df[col] = df[col].ffill().bfill()
     
     return df
 

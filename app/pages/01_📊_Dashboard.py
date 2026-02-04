@@ -648,24 +648,57 @@ for alert in alerts:
 # Quick Actions
 st.markdown("## ⚡ Quick Actions")
 
+# Import export utilities
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.export import export_to_csv, export_to_excel, generate_dashboard_report
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    if st.button("📊 Generate Report", use_container_width=True):
-        st.success("📋 Executive report generated!")
+    # Generate downloadable CSV
+    csv_data = export_to_csv(df, 'dashboard_data')
+    st.download_button(
+        label="📊 Export CSV",
+        data=csv_data,
+        file_name=f"hajj_dashboard_{datetime.now().strftime('%Y%m%d')}.csv",
+        mime="text/csv",
+        use_container_width=True
+    )
 
 with col2:
     if st.button("🔄 Refresh Data", use_container_width=True):
         st.cache_data.clear()
-        st.success("🔄 Data refreshed!")
+        st.rerun()
 
 with col3:
-    if st.button("📈 Run Analysis", use_container_width=True):
-        st.info("🧮 Advanced analysis initiated...")
+    # Generate downloadable Excel
+    excel_data = export_to_excel({'Dashboard Data': df}, 'dashboard')
+    st.download_button(
+        label="📈 Export Excel",
+        data=excel_data,
+        file_name=f"hajj_dashboard_{datetime.now().strftime('%Y%m%d')}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        use_container_width=True
+    )
 
 with col4:
-    if st.button("⚙️ Settings", use_container_width=True):
-        st.info("⚙️ Settings panel opened")
+    # Generate markdown report
+    kpis = {
+        'Sustainability Index': f"{current_data['Sustainability_Index']:.1f}%",
+        'Total Cost': f"Rp {current_data['Total_Cost']:,.0f}",
+        'Investment Return': f"{current_data['Investment_Return']*100:.1f}%",
+        'Risk Score': f"{current_data['Risk_Score']:.0f}"
+    }
+    report = generate_dashboard_report(kpis, df)
+    st.download_button(
+        label="📋 Report (MD)",
+        data=report,
+        file_name=f"hajj_report_{datetime.now().strftime('%Y%m%d')}.md",
+        mime="text/markdown",
+        use_container_width=True
+    )
 
 # Footer
 st.markdown("---")
